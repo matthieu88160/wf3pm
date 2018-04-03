@@ -1,0 +1,10 @@
+
+footer .jumbotron{
+	margin-bottom: 0px;
+	margin-top: 30px;
+}
+
+.center{
+	display: flex;
+	justify-content: center;
+}

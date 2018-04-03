@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}WF3PM Project manager{% endblock %}
+        </title>
+        
+        {% block stylesheets %}
+            <link rel="icon" type="image/png" href="/favicon.ico" />
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+            <link href="/css/main.css" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+    	    {% include 'header.html.twig' %}
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+
+        {% block footer %}
+    	    {% include 'footer.html.twig' %}
+        {% endblock %}
+
+        {% block javascripts %}
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% endblock %}
+    </body>
+</html>
