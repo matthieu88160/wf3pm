@@ -1,0 +1,17 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+        <p>Hello {{ user.getUsername() }}</p>
+        
+        <p>
+        	Please, to confirm your email address, please click the following link :
+        </p>
+        
+        <a href="{{ absolute_url(path('user_activate', {'token': user.getEmailToken()})) }}">
+        	{{ absolute_url(path('user_activate', {'token': user.getEmailToken()})) }}
+        </a>
+	</body>
+</html>

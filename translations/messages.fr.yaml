@@ -1,0 +1,48 @@
+HEADER:
+    HOME: Accueil
+    LIST_PROJECT: Liste des projets
+    ADD_PROJECT: Ajouter un projet
+    PROJECT: Projet
+    LOGIN: Connection
+    REGISTER: Créer son compte
+    LOCALE:
+        ITEM: Language
+        FR: Français
+        EN: Anglais
+FOOTER:
+    HOME: Accueil
+    LIST.PROJECT: Liste des projets
+    ADD.PROJECT: Ajouter un projet
+    LOGIN: Connection
+    REGISTER: Créer son compte
+HOMEPAGE:
+    TITLE: accueil
+ADD_PRODUCT:
+    INFO: Vous étes en train de créer un nouveau projet. Veuillez compléter le formulaire suivant.
+    TITLE: Ajout de projet
+REGISTER:
+    INFO: Vous étes en train de créer un nouveau compte utilisateur. Veuillez compléter le formulaire suivant.
+    TITLE: Créer son compte
+FORM:
+    PRODUCT:
+        NAME: 'Le nom du projet *'
+        DESCRIPTION: La description du projet
+        VERSION: 'La version du projet *'
+        SUBMIT: Sauvegarder
+        PLACEHOLDER:
+            NAME: Un nom
+            DESCRIPTION: La description içi
+            VERSION: 0.0.0
+    USER:
+        USERNAME: Pseudo
+        FIRSTNAME: Prénom
+        LASTNAME: Nom
+        EMAIL: Email
+        SUBMIT: Sauvegarder
+        PASSWORD:
+            FIRST: Mot de passe
+            SECOND: Répétez le mot de passe
+LIST_PRODUCT:
+    TITLE: Liste des projets
+    NO_PRODUCT: Aucun projet pour le moment
+    DETAILS: details

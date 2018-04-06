@@ -3,19 +3,19 @@
 	<div class="jumbotron">
 		<ul class="nav nav-pills nav-justified">
 			<li role="presentation" class="active">
-				<a href="#">home</a>
+				<a href="{{ path('homepage') }}">{{ 'FOOTER.HOME'|trans }}</a>
 			</li>
 			<li role="presentation">
-				<a href="#">list project</a>
+				<a href="#">{{ 'FOOTER.LIST.PROJECT'|trans }}</a>
 			</li>
 			<li role="presentation">
-				<a href="#">add project</a>
+				<a href="{{ path('add_product') }}">{{ 'FOOTER.ADD.PROJECT'|trans }}</a>
 			</li>
 			<li role="presentation">
-				<a href="#">login</a>
+				<a href="#">{{ 'FOOTER.LOGIN'|trans }}</a>
 			</li>
 			<li role="presentation">
-				<a href="#">register</a>
+				<a href="{{ path('user_register') }}">{{ 'FOOTER.REGISTER'|trans }}</a>
 			</li>
 		</ul>
 	</div>

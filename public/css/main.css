@@ -8,3 +8,37 @@ footer .jumbotron{
 	display: flex;
 	justify-content: center;
 }
+
+.version{
+	font-size: 0.4em;
+}
+
+.product > *{
+	border: 1px solid #ddd;
+	margin: 0px;
+	padding: 1em;
+}
+.product > h2{
+	border-radius: 4px 4px 0px 0px;
+}
+.product > div{
+	border-radius: 0px 0px 4px 4px;
+	background-color: #f7f7f9;
+}
+
+.p-1 {padding: 1em;}
+.p-2 {padding: 2em;}
+.p-3 {padding: 3em;}
+.p-4 {padding: 4em;}
+.p-5 {padding: 5em;}
+
+.tm-1 {margin-top: 5em;}
+.tm-2 {margin-top: 5em;}
+.tm-5 {margin-top: 5em;}
+.tm-10 {margin-top: 10em;}
+.bm-1 {margin-bottom: 5em;}
+.bm-2 {margin-bottom: 5em;}
+.bm-5 {margin-bottom: 5em;}
+.bm-10 {margin-bottom: 10em;}
+
+.b-warning {border-left: 4px solid #aa6708}

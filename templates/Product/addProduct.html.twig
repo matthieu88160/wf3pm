@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ 'ADD_PRODUCT.TITLE'|trans }}{% endblock %}
+
+{% block body %}
+
+	<div class="container tm-5">
+		<p class="bg-warning p-1 b-warning">
+			{{ 'ADD_PRODUCT.INFO'|trans }}
+		</p>
+		
+		<div class="container-fluid tm-5 bm-5">
+            {{ form(formular) }}
+        </div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+HEADER:
+    HOME: Home
+    LIST_PROJECT: List projects
+    ADD_PROJECT: Add project
+    PROJECT: Project
+    LOGIN: Login
+    REGISTER: Register
+    LOCALE:
+        ITEM: Language
+        FR: French
+        EN: English
+FOOTER:
+    HOME: Home
+    LIST.PROJECT: List projects
+    ADD.PROJECT: Add project
+    LOGIN: Login
+    REGISTER: Register
+HOMEPAGE:
+    TITLE: home
+ADD_PRODUCT:
+    INFO: You're creating a new project. Please, fill the form above.
+    TITLE: Add project
+REGISTER:
+    INFO: You're creating a new account. Please, fill the form above.
+    TITLE: Register
+FORM:
+    PRODUCT:
+        NAME: 'The project name *'
+        DESCRIPTION: The project description
+        VERSION: 'The project version *'
+        SUBMIT: Submit
+        PLACEHOLDER:
+            NAME: Some name
+            DESCRIPTION: The description here
+            VERSION: 0.0.0
+    USER:
+        USERNAME: Username
+        FIRSTNAME: Firstname
+        LASTNAME: Lastname
+        EMAIL: Email
+        SUBMIT: Submit
+        PASSWORD:
+            FIRST: Password
+            SECOND: Repeat password
+LIST_PRODUCT:
+    TITLE: Project list
+    NO_PRODUCT: No projects at this time
+    DETAILS: details

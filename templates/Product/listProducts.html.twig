@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ 'LIST_PRODUCT.TITLE'|trans }}{% endblock %}
+
+{% block body %}
+
+	<div class="container tm-5">
+		<div class="row">
+		{% for product in products %}
+		
+			{% if product.getDescription()|length > 500 %}
+				{% set description = product.getDescription()|slice(0, 500) ~ '...' %}
+			{% else %}
+				{% set description = product.getDescription() %}
+			{% endif %}
+			
+			{% if product.getVersion()|first < 1 %}
+				{% set label = 'label label-warning' %}
+			{% else %}
+				{% set label = 'label label-info' %}
+			{% endif %}
+			
+			
+			{% if loop.index0 is even and loop.first == false %}
+				</div><div class="row">
+			{% endif %}
+    		<div class="col-xs-12 col-md-6 bm-1">
+    			<div class="product p-1">
+                    <h2>
+                        {{ product.getName() }}
+                        <span class="{{ label }} version">v {{ product.getVersion() }}</span>
+                    </h2>
+                    <div class="row">
+                        <p>{{ description|nl2br }}</p>
+                        <div class="col-xs-8 col-xs-offset-2">
+                        	<a href="#">
+                        		<button class="btn btn-success btn-block">{{ 'LIST_PRODUCT.DETAILS'|trans }}</button>
+                        	</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+        	<div>
+        		<p>{{ 'LIST_PRODUCT.NO_PRODUCT'|trans }}</p>
+        	</div>
+        {% endfor %}
+        </div>
+	</div>
+
+{% endblock %}
