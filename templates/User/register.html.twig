@@ -2,6 +2,26 @@
 
 {% block title %}{{ parent() }} - {{ 'REGISTER.TITLE'|trans }}{% endblock %}
 
+{% block javascripts %}
+	{{ parent() }}
+	<script src="/js/UsernameValidator.js" type="text/javascript"></script>
+	<script src="/js/register.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var validator = new UsernameValidator('#form_username', '{{ path('username_available') }}', 'POST', {{ app.debug ? 'true' : 'false' }});
+		validator.setCallback(usernameValidatorCallback);
+		validator.setBefore(beforeValidate);
+
+		$('#form_username').on('change', function(){ validator.validate(); });
+		$('#form_username').on('keyup', function(){ validator.validate(); });
+		$('#form_username').on('paste', function(){ validator.validate(); });
+		$('#form_username').on('drop', function(data){
+			data.originalEvent.preventDefault();
+			$('#form_username').val(data.originalEvent.dataTransfer.getData("Text"));
+			validator.validate(); 
+		});
+	</script>
+{% endblock %}
+
 {% block body %}
 
 	<div class="container tm-5">
