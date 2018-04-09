@@ -26,6 +26,9 @@ footer .jumbotron{
 	background-color: #f7f7f9;
 }
 
+.username-available{color: green;}
+.username-unavailable{color:red;}
+
 .p-1 {padding: 1em;}
 .p-2 {padding: 2em;}
 .p-3 {padding: 3em;}
