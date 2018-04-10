@@ -5,10 +5,13 @@ HEADER:
     PROJECT: Project
     LOGIN: Login
     REGISTER: Register
+    LOGOUT: Logout
     LOCALE:
         ITEM: Language
         FR: French
         EN: English
+PRODUCT:
+    TITLE: project
 FOOTER:
     HOME: Home
     LIST.PROJECT: List projects

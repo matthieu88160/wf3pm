@@ -33,7 +33,7 @@
                     <div class="row">
                         <p>{{ description|nl2br }}</p>
                         <div class="col-xs-8 col-xs-offset-2">
-                        	<a href="#">
+                        	<a href="{{ path('product', {'product': product.getId()}) }}">
                         		<button class="btn btn-success btn-block">{{ 'LIST_PRODUCT.DETAILS'|trans }}</button>
                         	</a>
                         </div>

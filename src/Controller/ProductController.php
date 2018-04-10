@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Repository\ProductRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController
 {
@@ -98,6 +99,24 @@ class ProductController
                 'Product/listProducts.html.twig',
                 [
                     'products' => $repository->findAll()
+                ]
+            )
+        );
+    }
+    
+    public function displayProduct(Environment $twig, ProductRepository $repository, int $product)
+    {
+        $product = $repository->find($product);
+        if (!$product) {
+            throw new NotFoundHttpException();
+        }
+        
+        return new Response(
+            $twig->render(
+                'Product/product.html.twig',
+                [
+                    'product' => $product,
+                    'routeAttr' => ['product' => $product->getId()]
                 ]
             )
         );

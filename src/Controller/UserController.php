@@ -20,6 +20,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use App\Repository\RoleRepository;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController
 {
@@ -30,7 +33,9 @@ class UserController
         SessionInterface $session,
         Environment $twig,
         UrlGeneratorInterface $urlGenerator,
-        \Swift_Mailer $mailer
+        \Swift_Mailer $mailer,
+        EncoderFactoryInterface $encoderFactory,
+        RoleRepository $roleRepository
     ) {
         $user = new User();
         $builder = $factory->createBuilder(FormType::class, $user);
@@ -81,6 +86,20 @@ class UserController
         $form = $builder->getForm();
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $salt = md5($user->getUsername());
+            $user->setSalt($salt);
+            
+            $encoder = $encoderFactory->getEncoder(User::class);
+            $password = $encoder->encodePassword(
+                $user->getPassword(),
+                $salt
+            );
+            
+            $user->setPassword($password);
+            
+            $user->addRole($roleRepository->findOneByLabel('ROLE_USER'));
+            
             $manager->persist($user);
             $manager->flush();
             
@@ -118,7 +137,8 @@ class UserController
         $token,
         ObjectManager $manager,
         SessionInterface $session,
-        UrlGeneratorInterface $urlGenerator
+        UrlGeneratorInterface $urlGenerator,
+        RoleRepository $roleRepository
     ) {
         $userRepository = $manager->getRepository(User::class);
         $user = $userRepository->findOneByEmailToken($token);
@@ -129,6 +149,7 @@ class UserController
         
         $user->setActive(true);
         $user->setEmailToken(null);
+        $user->addRole($roleRepository->findOneByLabel('ROLE_ACTIVE'));
         
         $manager->flush();
         $session->getFlashBag()->add('info', 'Account activated');
@@ -151,6 +172,21 @@ class UserController
             [
                 'available' => !$unavailable
             ]
+        );
+    }
+    
+    public function login(
+        AuthenticationUtils $authUtils,
+        Environment $twig
+    ) {
+        return new Response(
+            $twig->render(
+                'Security/login.html.twig',
+                [
+                    'last_username' => $authUtils->getLastUsername(),
+                    'error' => $authUtils->getLastAuthenticationError()
+                ]
+            )
         );
     }
 }

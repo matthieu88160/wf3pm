@@ -26,6 +26,15 @@ list_products:
     requirements:
         _locale: 'en|fr'
 
+product:
+    path: /{_locale}/product/{product}
+    controller: App\Controller\ProductController::displayProduct
+    defaults:
+        _locale: en
+    requirements:
+        _locale: 'en|fr'
+        product: '^[0-9]+$'
+
 user_register:
     path: /{_locale}/register
     controller: App\Controller\UserController::register
@@ -47,3 +56,10 @@ username_available:
     path: /username/available
     controller: App\Controller\UserController::usernameAvailable
     methods: ['POST']
+    
+login:
+    path: /{_locale}/login
+    controller: App\Controller\UserController::login
+
+logout:
+    path: /logout

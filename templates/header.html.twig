@@ -47,7 +47,10 @@
 							aria-expanded="false">{{ 'HEADER.PROJECT'|trans }} <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ path('list_products') }}">{{ 'HEADER.LIST_PROJECT'|trans }}</a></li>
-								<li><a href="{{ path('add_product') }}">{{ 'HEADER.ADD_PROJECT'|trans }}</a></li>
+								
+					            {% if is_granted('ROLE_ACTIVE') %}
+									<li><a href="{{ path('add_product') }}">{{ 'HEADER.ADD_PROJECT'|trans }}</a></li>
+								{% endif %}
 							</ul>
 						</li>
 					</ul>
@@ -57,16 +60,23 @@
 							aria-expanded="false">{{ 'HEADER.LOCALE.ITEM'|trans }} <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="{{ path(app.request.attributes.get('_route'), {'_locale': 'en'}) }}">{{ 'HEADER.LOCALE.EN'|trans }}</a>
+								{% set enRouteVar = {'_locale': 'en'}|merge(routeAttr|default([])) %}
+									<a href="{{ path(app.request.attributes.get('_route'), enRouteVar) }}">{{ 'HEADER.LOCALE.EN'|trans }}</a>
 								</li>
 								<li>
-									<a href="{{ path(app.request.attributes.get('_route'), {'_locale': 'fr'}) }}">{{ 'HEADER.LOCALE.FR'|trans }}</a>
+								{% set frRouteVar = {'_locale': 'fr'}|merge(routeAttr|default([])) %}
+									<a href="{{ path(app.request.attributes.get('_route'), frRouteVar) }}">{{ 'HEADER.LOCALE.FR'|trans }}</a>
 								</li>
 							</ul>
 						</li>
 						
-						<li><a href="#">{{ 'HEADER.LOGIN'|trans }}</a></li>
-						<li><a href="{{ path('user_register') }}">{{ 'HEADER.REGISTER'|trans }}</a></li>
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							<li><a href="{{ path('logout') }}">{{ 'HEADER.LOGOUT'|trans }}</a></li>
+						{% else %}
+    						<li><a href="{{ path('login') }}">{{ 'HEADER.LOGIN'|trans }}</a></li>
+    						<li><a href="{{ path('user_register') }}">{{ 'HEADER.REGISTER'|trans }}</a></li>
+						{% endif %}
+						
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

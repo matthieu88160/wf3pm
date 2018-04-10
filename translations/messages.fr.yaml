@@ -5,10 +5,13 @@ HEADER:
     PROJECT: Projet
     LOGIN: Connection
     REGISTER: Créer son compte
+    LOGOUT: Déconnexion
     LOCALE:
         ITEM: Language
         FR: Français
         EN: Anglais
+PRODUCT:
+    TITLE: projet
 FOOTER:
     HOME: Accueil
     LIST.PROJECT: Liste des projets

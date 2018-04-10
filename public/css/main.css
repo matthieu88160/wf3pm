@@ -1,7 +1,16 @@
 
+body{
+	position: relative;
+	min-height: 100vh;
+	padding-bottom: 20vh;
+}
+
 footer .jumbotron{
 	margin-bottom: 0px;
 	margin-top: 30px;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
 }
 
 .center{
@@ -39,8 +48,8 @@ footer .jumbotron{
 .tm-2 {margin-top: 5em;}
 .tm-5 {margin-top: 5em;}
 .tm-10 {margin-top: 10em;}
-.bm-1 {margin-bottom: 5em;}
-.bm-2 {margin-bottom: 5em;}
+.bm-1 {margin-bottom: 1em;}
+.bm-2 {margin-bottom: 2em;}
 .bm-5 {margin-bottom: 5em;}
 .bm-10 {margin-bottom: 10em;}
 
