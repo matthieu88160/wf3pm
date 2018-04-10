@@ -104,8 +104,11 @@ class ProductController
         );
     }
     
-    public function displayProduct(Environment $twig, ProductRepository $repository, int $product)
-    {
+    public function displayProduct(
+        Environment $twig, 
+        ProductRepository $repository, 
+        int $product
+    ) {
         $product = $repository->find($product);
         if (!$product) {
             throw new NotFoundHttpException();
