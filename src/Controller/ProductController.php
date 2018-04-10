@@ -16,6 +16,10 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Dto\FileDto;
+use App\Form\CommentFileType;
+use App\Entity\Comment;
+use App\Form\CommentType;
 
 class ProductController
 {
@@ -106,20 +110,30 @@ class ProductController
     
     public function displayProduct(
         Environment $twig, 
-        ProductRepository $repository, 
-        int $product
+        ProductRepository $repository,
+        int $product,
+        FormFactoryInterface $formFactory,
+        Request $request
     ) {
         $product = $repository->find($product);
         if (!$product) {
             throw new NotFoundHttpException();
         }
         
+        $comment = new Comment();
+        $form = $formFactory->create(
+            CommentType::class, 
+            $comment, 
+            ['stateless' => true]
+        );
+        
         return new Response(
             $twig->render(
                 'Product/product.html.twig',
                 [
                     'product' => $product,
-                    'routeAttr' => ['product' => $product->getId()]
+                    'routeAttr' => ['product' => $product->getId()],
+                    'form' => $form->createView()
                 ]
             )
         );

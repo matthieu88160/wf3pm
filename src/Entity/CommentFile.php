@@ -27,6 +27,16 @@ class CommentFile
      */
     private $comment;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $mimeType;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function getId()
     {
         return $this->id;
@@ -52,6 +62,30 @@ class CommentFile
     public function setComment(?Comment $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getMimeType(): ?string
+    {
+        return $this->mimeType;
+    }
+
+    public function setMimeType(string $mimeType): self
+    {
+        $this->mimeType = $mimeType;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

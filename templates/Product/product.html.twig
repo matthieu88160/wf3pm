@@ -3,7 +3,6 @@
 {% block title %}{{ parent() }} - {{ 'PRODUCT.TITLE'|trans }}{% endblock %}
 
 {% block body %}
-
 	{% if product.getVersion()|first < 1 %}
 		{% set label = 'label label-warning' %}
 	{% else %}
@@ -42,11 +41,20 @@
             			
             			<div class="row">
                 		    {% for file in comment.getFiles() %}
-                		    	<img 
-                		    		class="img-responsive col-xs-12 col-md-6" 
-                		    		alt="comment image" 
-                		    		src="{{ file.getFileUrl() }}"
-            		    		>
+                		    	{% if file.getMimeType()|slice(0, 6) == 'image/' %}
+                    		    	<img 
+                    		    		class="img-responsive col-xs-12 col-md-6" 
+                    		    		alt="{{ file.getName() }}" 
+                    		    		src="{{ file.getFileUrl() }}"
+                		    		>
+            		    		{% else %}
+        		    				<a href="{{ file.getFileUrl() }}">
+        		    				    <button class="btn btn-success">
+        		    				    	<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+            		    		            {{ 'PRODUCT.DOWNLOAD'|trans }} {{ file.getName() }}
+            		    		        </button>
+    		    				    </a>
+            		    		{% endif %}
                 		    {% endfor %}
             		    </div>
         		    </div>
@@ -54,5 +62,14 @@
     		{% endfor %}
 		</div>
 	</div>
-
+	
+	<div class="container">
+	{{ form(form) }}
+	</div>
 {% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="/js/commentFileAdder.js" type="text/javascript"></script>
+{% endblock %}
+

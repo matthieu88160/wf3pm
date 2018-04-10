@@ -12,6 +12,7 @@ HEADER:
         EN: English
 PRODUCT:
     TITLE: project
+    DOWNLOAD: download
 FOOTER:
     HOME: Home
     LIST.PROJECT: List projects
