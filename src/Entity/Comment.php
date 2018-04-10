@@ -34,6 +34,12 @@ class Comment
      */
     private $files;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
     public function __construct()
     {
         $this->files = new ArrayCollection();
@@ -95,6 +101,18 @@ class Comment
                 $file->setComment(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

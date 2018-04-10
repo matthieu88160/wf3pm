@@ -1,16 +1,7 @@
 
-body{
-	position: relative;
-	min-height: 100vh;
-	padding-bottom: 20vh;
-}
-
 footer .jumbotron{
 	margin-bottom: 0px;
 	margin-top: 30px;
-	width: 100%;
-	position: absolute;
-	bottom: 0px;
 }
 
 .center{
@@ -44,8 +35,8 @@ footer .jumbotron{
 .p-4 {padding: 4em;}
 .p-5 {padding: 5em;}
 
-.tm-1 {margin-top: 5em;}
-.tm-2 {margin-top: 5em;}
+.tm-1 {margin-top: 1em;}
+.tm-2 {margin-top: 2em;}
 .tm-5 {margin-top: 5em;}
 .tm-10 {margin-top: 10em;}
 .bm-1 {margin-bottom: 1em;}
@@ -53,4 +44,22 @@ footer .jumbotron{
 .bm-5 {margin-bottom: 5em;}
 .bm-10 {margin-bottom: 10em;}
 
-.b-warning {border-left: 4px solid #aa6708}
+.b-warning {border-left: 4px solid #aa6708;}
+.b-danger {border-left: 4px solid #ce4844;}
+.b-success {border-left: 4px solid #449d44;}
+
+.comment > *{
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	margin: 0px;
+	padding: 1em;
+}
+.comment > h4{
+	border-radius: 4px 4px 0px 0px;
+	background-color: #f7f7f9;
+}
+.comment > div{
+	border-radius: 0px 0px 4px 4px;
+}
+

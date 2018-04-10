@@ -27,6 +27,32 @@
 		<p class="bm-1">
 		    {{ product.getDescription()|nl2br }}
 		</p>
+		
+		<div class="container-fluid tm-5">
+    		{% for comment in product.getComments() %}
+    			{% set bClass = (loop.index0 is even ? 'b-success' : 'b-warning') %}
+    			<div class="row comment p-1">
+    				<h4 class="{{ bClass }} bm-2">
+    				    {{ comment.getAuthor().getUsername() }}
+				    </h4>
+				    <div class="{{ bClass }}">
+            			<p class="bm-1">
+            			    {{ comment.getComment() }}
+        			    </p>
+            			
+            			<div class="row">
+                		    {% for file in comment.getFiles() %}
+                		    	<img 
+                		    		class="img-responsive col-xs-12 col-md-6" 
+                		    		alt="comment image" 
+                		    		src="{{ file.getFileUrl() }}"
+            		    		>
+                		    {% endfor %}
+            		    </div>
+        		    </div>
+    		    </div>
+    		{% endfor %}
+		</div>
 	</div>
 
 {% endblock %}
