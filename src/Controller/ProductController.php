@@ -20,6 +20,12 @@ use App\Dto\FileDto;
 use App\Form\CommentFileType;
 use App\Entity\Comment;
 use App\Form\CommentType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Entity\CommentFile;
+use Ramsey\Uuid\Uuid;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use App\Manager\CommentManager;
 
 class ProductController
 {
@@ -112,7 +118,8 @@ class ProductController
         Environment $twig, 
         ProductRepository $repository,
         int $product,
-        FormFactoryInterface $formFactory,
+        UrlGeneratorInterface $urlGenerator,
+        CommentManager $commentManager, 
         Request $request
     ) {
         $product = $repository->find($product);
@@ -121,11 +128,14 @@ class ProductController
         }
         
         $comment = new Comment();
-        $form = $formFactory->create(
-            CommentType::class, 
-            $comment, 
-            ['stateless' => true]
-        );
+        $form = $commentManager->getBaseForm($comment);
+        $commentManager->handleRequest($form, $request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentManager->processForm($comment, $product);
+            
+            return new RedirectResponse($urlGenerator->generate('product', ['product' => $product->getId()]));
+        }
         
         return new Response(
             $twig->render(

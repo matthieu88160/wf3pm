@@ -84,6 +84,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $salt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $apiKey;
     
     public function __construct()
     {
@@ -232,5 +237,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         return;
+    }
+
+    public function getApiKey(): ?string
+    {
+        return $this->apiKey;
+    }
+
+    public function setApiKey(string $apiKey): self
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
     }
 }

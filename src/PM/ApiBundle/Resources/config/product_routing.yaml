@@ -1,0 +1,7 @@
+api_product_list:
+    path: '/products'
+    controller: PM\ApiBundle\Controller\ApiController::getProducts
+
+api_product_create:
+    path: '/product'
+    controller: PM\ApiBundle\Controller\ApiController::postProduct

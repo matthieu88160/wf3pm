@@ -18,3 +18,16 @@ button.on('click', addFileInput);
 
 
 $("#comment_files").after(button);
+
+
+
+
+
+
+
+
+
+
+
+
+

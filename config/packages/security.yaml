@@ -9,12 +9,23 @@ security:
             entity:
                 class:    App\Entity\User
                 property: username
+        api_provider:
+            entity:
+                class:    App\Entity\User
+                property: apiKey
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        api:
+            pattern: ^/api
+            provider: api_provider
+            guard:
+                authenticators:
+                    - PM\ApiBundle\Security\Authenticator\TokenAuthenticator
         main:
             anonymous: true
+            pattern: ^/(?!api)
             provider: user_provider
             form_login:
                 login_path: login
