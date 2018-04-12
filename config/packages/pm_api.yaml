@@ -1,0 +1,9 @@
+pm_api:
+    groups:
+        - "product.id"
+        - "product.name"
+        - "product.description"
+        - "product.comments"
+        - "comment.comment"
+        - "comment.author"
+        - "user.username"

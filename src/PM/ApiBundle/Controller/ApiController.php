@@ -18,7 +18,7 @@ class ApiController extends Controller
             $this->get('serializer')->serialize(
                 $products,
                 'json',
-                ['groups' => ['API']]
+                ['groups' => $this->getParameter('pm_api_groups')]
             ),
             200,
             [],
@@ -41,7 +41,7 @@ class ApiController extends Controller
                 $this->get('serializer')->serialize(
                     $product,
                     'json',
-                    ['groups' => ['API']]
+                    ['groups' => $this->getParameter('pm_api_groups')]
                     ),
                 200,
                 [],

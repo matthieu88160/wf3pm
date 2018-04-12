@@ -23,20 +23,20 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"API"})
+     * @Groups({"product.id"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Groups({"API"})
+     * @Groups({"product.name"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"API"})
+     * @Groups({"product.description"})
      */
     private $description;
 
@@ -46,13 +46,13 @@ class Product
      *  pattern="#^\d+\.\d+\.\d+$#",
      *  message="The version must follow the pattern X.X.X"
      * )
-     * @Groups({"API"})
+     * @Groups({"product.version"})
      */
     private $version;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="product", orphanRemoval=true)
-     * @Groups({"API"})
+     * @Groups({"product.comments"})
      */
     private $comments;
 

@@ -18,19 +18,20 @@ class Comment
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"API"})
+     * @Groups({"comment.id"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"API"})
+     * @Groups({"comment.comment"})
      */
     private $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"comment.author"})
      */
     private $author;
 

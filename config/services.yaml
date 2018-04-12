@@ -19,9 +19,6 @@ services:
         resource: '../src/*'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Manager,PM}'
     
-    PM\ApiBundle\Security\Authenticator\:
-        resource: '../src/PM/ApiBundle/Security/Authenticator/*'
-
     App\Manager\CommentManager:
         class: App\Manager\CommentManager
         arguments:
