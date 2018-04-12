@@ -97,6 +97,7 @@ class User implements UserInterface
     {
         $this->setEmailToken(Uuid::uuid1());
         $this->roles = new ArrayCollection();
+        $this->apiKey = Uuid::uuid1();
     }
 
     public function getId()
